@@ -1,0 +1,43 @@
+GET http://127.0.0.1:8000/api/v1/office
+Accept: application/json
+
+###
+
+GET http://127.0.0.1:8000/api/v1/office/1
+Accept: application/json
+
+###
+
+POST http://127.0.0.1:8000/api/v1/office
+Content-Type: application/json
+
+{
+    "number": 100,
+    "address": "some address"
+}
+
+###
+
+PUT http://127.0.0.1:8000/api/v1/office/11
+Content-Type: application/json
+
+{
+    "address": "alabama"
+}
+
+###
+
+DELETE http://127.0.0.1:8000/api/v1/office/10
+Accept: application/json
+
+###
+
+POST http://127.0.0.1:8000/api/v1/worker
+Content-Type: application/json
+
+{
+    "name": "Nikita",
+    "salary": 100000,
+    "email": "socks@gmail.com",
+    "officeId": 6
+}

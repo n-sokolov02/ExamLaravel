@@ -1,0 +1,618 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "API",
+        "description": "API endpoint",
+        "version": "1.0.0"
+    },
+    "paths": {
+        "/api/v1/office": {
+            "get": {
+                "tags": [
+                    "Office"
+                ],
+                "summary": "Get all offices",
+                "description": "Get list of all offices available",
+                "operationId": "getOffices",
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/OfficeListResponse"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Office"
+                ],
+                "summary": "Create a office",
+                "operationId": "addOffice",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/OfficeRequestBody"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/OfficeSuccessResponse"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Unprocessable Content",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/UnprocessableEntityResponse"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v1/office/{id}": {
+            "get": {
+                "tags": [
+                    "Office"
+                ],
+                "summary": "Get office",
+                "description": "Get information about a specific office with ID",
+                "operationId": "getOfficeById",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "The ID of the office",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/OfficeSuccessResponse"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/NotFoundResponse"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Office"
+                ],
+                "summary": "Update specific office",
+                "operationId": "updateOffice",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "office ID",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/OfficeRequestBody"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/OfficeSuccessResponse"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Unprocessable Content",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/UnprocessableEntityResponse"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/NotFoundResponse"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Office"
+                ],
+                "summary": "Delete specific Office",
+                "operationId": "deleteOffice",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "office ID",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "Object was successfully deleted",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/NoContentResponse"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/NotFoundResponse"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v1/worker": {
+            "get": {
+                "tags": [
+                    "Worker"
+                ],
+                "summary": "Get all workers",
+                "description": "Get list of all workers available",
+                "operationId": "getWorkers",
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/WorkerListResponse"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Worker"
+                ],
+                "summary": "Create a worker",
+                "operationId": "addWorker",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/WorkerRequestBody"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/WorkerSuccessResponse"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Unprocessable Content",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/UnprocessableEntityResponse"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v1/worker/{id}": {
+            "get": {
+                "tags": [
+                    "Worker"
+                ],
+                "summary": "Get worker",
+                "description": "Get information about a specific worker with ID",
+                "operationId": "getWorkerById",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "The ID of the worker",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/WorkerSuccessResponse"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/NotFoundResponse"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Worker"
+                ],
+                "summary": "Update specific worker",
+                "operationId": "updateWorker",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "worker ID",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/WorkerRequestBody"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/WorkerSuccessResponse"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Unprocessable Content",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/UnprocessableEntityResponse"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/NotFoundResponse"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Worker"
+                ],
+                "summary": "Delete specific worker",
+                "operationId": "deleteWorker",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "worker ID",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "Object was successfully deleted",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/NoContentResponse"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/NotFoundResponse"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "OfficeRequestBody": {
+                "required": [
+                    "number",
+                    "address"
+                ],
+                "properties": {
+                    "number": {
+                        "type": "integer",
+                        "example": "123"
+                    },
+                    "address": {
+                        "type": "string",
+                        "example": "Moscow, Zelenograd K201"
+                    }
+                },
+                "type": "object"
+            },
+            "WorkerRequestBody": {
+                "required": [
+                    "name",
+                    "salary",
+                    "email",
+                    "officeId"
+                ],
+                "properties": {
+                    "name": {
+                        "type": "string",
+                        "example": "Nikolai"
+                    },
+                    "salary": {
+                        "type": "integer",
+                        "example": 50000
+                    },
+                    "email": {
+                        "type": "string",
+                        "example": "sokolov@gmail.com"
+                    },
+                    "officeId": {
+                        "type": "string",
+                        "example": 2
+                    }
+                },
+                "type": "object"
+            },
+            "NoContentResponse": {
+                "description": "No Content",
+                "properties": {
+                    "data": {
+                        "description": "No Content",
+                        "type": "object"
+                    }
+                },
+                "type": "object"
+            },
+            "NotFoundResponse": {
+                "required": [
+                    "error"
+                ],
+                "properties": {
+                    "error": {
+                        "type": "string",
+                        "example": "Not Found"
+                    }
+                },
+                "type": "object"
+            },
+            "OfficeListResponse": {
+                "required": [
+                    "data"
+                ],
+                "properties": {
+                    "data": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/OfficeSchema"
+                        }
+                    }
+                },
+                "type": "object"
+            },
+            "OfficeSuccessResponse": {
+                "required": [
+                    "data"
+                ],
+                "properties": {
+                    "data": {
+                        "$ref": "#/components/schemas/OfficeSchema"
+                    }
+                },
+                "type": "object"
+            },
+            "UnprocessableEntityResponse": {
+                "required": [
+                    "error"
+                ],
+                "properties": {
+                    "error": {
+                        "type": "string",
+                        "example": "Unprocessable Content"
+                    }
+                },
+                "type": "object"
+            },
+            "WorkerListResponse": {
+                "required": [
+                    "data"
+                ],
+                "properties": {
+                    "data": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/WorkerSchema"
+                        }
+                    }
+                },
+                "type": "object"
+            },
+            "WorkerSuccessResponse": {
+                "required": [
+                    "data"
+                ],
+                "properties": {
+                    "data": {
+                        "$ref": "#/components/schemas/WorkerSchema"
+                    }
+                },
+                "type": "object"
+            },
+            "OfficeSchema": {
+                "required": [
+                    "number",
+                    "address"
+                ],
+                "properties": {
+                    "number": {
+                        "type": "integer",
+                        "example": "123"
+                    },
+                    "address": {
+                        "type": "string",
+                        "maxLength": 256,
+                        "example": "Moscow, Zelenograd K113"
+                    }
+                },
+                "type": "object"
+            },
+            "WorkerSchema": {
+                "required": [
+                    "name",
+                    "salary",
+                    "email",
+                    "officeId"
+                ],
+                "properties": {
+                    "name": {
+                        "type": "string",
+                        "maxLength": 64,
+                        "example": "John"
+                    },
+                    "salary": {
+                        "type": "integer",
+                        "maxLength": 64,
+                        "example": "50000"
+                    },
+                    "officeId": {
+                        "type": "string",
+                        "maxLength": 64,
+                        "example": 2
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "requestBodies": {
+            "OfficeRequestBody": {
+                "description": "office request body",
+                "required": true,
+                "content": {
+                    "application/json": {
+                        "schema": {
+                            "$ref": "#components/schemas/OfficeRequestBody"
+                        }
+                    }
+                }
+            },
+            "WorkerRequestBody": {
+                "description": "worker request body",
+                "required": true,
+                "content": {
+                    "application/json": {
+                        "schema": {
+                            "$ref": "#/components/schemas/WorkerRequestBody"
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
